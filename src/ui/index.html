@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>ImageScanner — Görsel koleksiyonunuz</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="renderer.js" defer></script>
+</head>
+<body>
+  <div class="titlebar">
+    <span class="titlebar-name">ImageScanner <span>— kişisel görsel çalışma alanınız</span></span>
+    <div class="window-controls">
+      <button data-window="minimize" aria-label="Simge durumuna küçült"><i data-icon="minus"></i></button>
+      <button data-window="maximize" aria-label="Pencereyi büyüt veya küçült"><i data-icon="square"></i></button>
+      <button data-window="close" class="window-close" aria-label="Kapat"><i data-icon="close"></i></button>
+    </div>
+  </div>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#" data-page="compare" aria-label="ImageScanner ana ekran">
+        <span class="brand-mark"><i data-icon="scan-image"></i></span>
+        <span>ImageScanner<small>GÖRSEL ÇALIŞMA ALANI</small></span>
+      </a>
+      <div class="nav-heading">ÇALIŞMA ALANI</div>
+      <nav aria-label="Ana menü">
+        <button class="nav-item active" data-page="compare"><i data-icon="scan"></i><span>Karşılaştır</span></button>
+        <button class="nav-item" data-page="library"><i data-icon="images"></i><span>Koleksiyonum</span><b id="nav-library-count">0</b></button>
+        <button class="nav-item" data-page="history"><i data-icon="history"></i><span>Geçmiş</span></button>
+      </nav>
+      <div class="sidebar-guide"><span class="guide-orbit"><i data-icon="sparkles"></i></span><strong>Küçük farkları yakala.</strong><p>Boyut değişse de aynı görseli koleksiyonunda bul.</p><button data-action="demo">Örneklerle keşfet <i data-icon="arrow-right"></i></button></div>
+      <div class="sidebar-bottom">
+        <button class="nav-item" data-page="settings"><i data-icon="settings"></i><span>Gizlilik ve ayarlar</span></button>
+        <div class="device-status"><span class="status-led"></span><span>Bu cihazda çalışıyor<small>Çevrimdışı · v1.0.0</small></span><i data-icon="shield-check"></i></div>
+      </div>
+    </aside>
+    <main class="workspace" id="workspace">
+      <header class="topbar"><div class="breadcrumb">Çalışma alanı <i data-icon="chevron-right"></i> <strong id="page-label">Karşılaştır</strong></div><div class="top-actions"><span class="local-badge"><i data-icon="lock"></i> Yalnızca cihazınızda</span><button class="button button-dark" data-action="add-library"><i data-icon="plus"></i> Koleksiyona ekle</button></div></header>
+      <div id="view" class="view"><div class="boot-loading">Çalışma alanınız hazırlanıyor…</div></div>
+      <footer class="workspace-footer"><span><i data-icon="shield-check"></i> Görselleriniz cihazınızda kalır.</span><span>Size ait bir arşiv. Sizin kontrolünüzde.</span></footer>
+    </main>
+  </div>
+  <div id="progress" class="progress-panel" role="status" aria-live="polite" hidden></div>
+  <div id="toasts" class="toast-stack" aria-live="polite"></div>
+  <dialog id="modal" class="modal"></dialog>
+</body>
+</html>

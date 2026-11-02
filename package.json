@@ -1,0 +1,39 @@
+{
+  "name": "imagescanner",
+  "version": "1.0.0",
+  "description": "Çevrimdışı görsel koleksiyonu ve benzer kopya bulucu",
+  "main": "src/main.cjs",
+  "author": "ImageScanner",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "electron .",
+    "test": "node --test tests/*.test.cjs",
+    "test:app": "node tests/electron-smoke.cjs",
+    "assets": "node scripts/create-assets.cjs",
+    "pack": "electron-builder --win dir",
+    "dist": "electron-builder --win portable"
+  },
+  "dependencies": { "sharp": "0.35.5" },
+  "devDependencies": {
+    "electron": "44.9.0",
+    "electron-builder": "26.15.3",
+    "@playwright/test": "1.64.1"
+  },
+  "build": {
+    "appId": "local.imagescanner.desktop",
+    "productName": "ImageScanner",
+    "asar": true,
+    "asarUnpack": ["node_modules/sharp/**/*", "node_modules/@img/**/*"],
+    "files": ["src/**/*", "assets/**/*", "package.json", "README.md", "LICENSE"],
+    "directories": { "output": "dist", "buildResources": "assets" },
+    "electronLanguages": ["tr", "en-US"],
+    "win": {
+      "target": "portable",
+      "icon": "assets/icon.ico",
+      "signAndEditExecutable": true,
+      "artifactName": "ImageScanner-${version}-portable.${ext}"
+    },
+    "portable": { "requestExecutionLevel": "user" }
+  }
+}
